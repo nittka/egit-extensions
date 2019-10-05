@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Egit UI extensions
+Bundle-SymbolicName: de.nittka.tooling.egit;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Automatic-Module-Name: de.nittka.tooling.egit
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: org.eclipse.core.commands,
+ org.eclipse.ui,
+ org.eclipse.core.runtime
+Export-Package: de.nittka.tooling.egit.mavenimport
+Import-Package: org.eclipse.egit.ui.internal.repository.tree,
+ org.eclipse.jgit.lib;version="5.6.0"

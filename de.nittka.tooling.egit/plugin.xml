@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            categoryId="org.eclipse.egit.ui.commandCategory"
+            id="de.nittka.tooling.egit.RepositoriesViewImportMavenProject"
+            name="Import Maven Project"
+            >
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            commandId="de.nittka.tooling.egit.RepositoriesViewImportMavenProject">
+         <class
+               class="de.nittka.tooling.egit.mavenimport.ImportMavenProjectCommand">
+         </class>
+         <activeWhen>
+               <and>
+                  <count
+                        value="1">
+                  </count>
+                  <iterate>
+                     <or>
+                        <instanceof
+                              value="org.eclipse.egit.ui.internal.repository.tree.RepositoryNode">
+                        </instanceof>
+                        <instanceof
+                              value="org.eclipse.egit.ui.internal.repository.tree.WorkingDirNode">
+                        </instanceof>
+                     </or>
+                     <test property="GitRepository.isBare" value="false" />
+                  </iterate>
+               </and>
+         </activeWhen>
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+     <menuContribution
+            locationURI="popup:org.eclipse.egit.ui.RepositoriesView?after=repo-3">
+      <command
+               commandId="de.nittka.tooling.egit.RepositoriesViewImportMavenProject"
+               label="Import Maven Project"
+               style="push">
+            <visibleWhen checkEnabled="true" />
+         </command>
+      </menuContribution>
+   </extension>
+</plugin>
