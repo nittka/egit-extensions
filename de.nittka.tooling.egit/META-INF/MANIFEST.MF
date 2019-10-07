@@ -10,4 +10,4 @@ Require-Bundle: org.eclipse.core.commands,
  org.eclipse.core.runtime
 Export-Package: de.nittka.tooling.egit.mavenimport
 Import-Package: org.eclipse.egit.ui.internal.repository.tree,
- org.eclipse.jgit.lib;version="5.6.0"
+ org.eclipse.jgit.lib

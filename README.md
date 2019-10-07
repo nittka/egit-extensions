@@ -11,5 +11,5 @@ This plugin adds an Import Maven Project entry to the context menu (for the repo
 
 # Steps to build and use the plugin
 
-Currently, there is no update site. I have the egit ui source code checked out.
+Currently, there is no update site. In order to prevent dependency cycle problems, use a regular Eclipse (no Egit development setup).
 There should not be compile errors in the tooling.egit-plugin. Select Export Deployable plug-ins and fragments, and place the resulting jar in the dropins folder of your Eclipse installation.
