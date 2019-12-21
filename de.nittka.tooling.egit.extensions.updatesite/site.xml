@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/de.nittka.tooling.egit.extensions.feature_1.0.0.qualifier.jar" id="de.nittka.tooling.egit.extensions.feature" version="1.0.0.qualifier">
+   <feature url="features/de.nittka.tooling.egit.extensions.feature_1.0.0.201912211746.jar" id="de.nittka.tooling.egit.extensions.feature" version="1.0.0.201912211746">
+      <category name="de.nittka.tooling.egit.extensions.category"/>
+   </feature>
+   <feature url="features/hr.ja.penextern_feature_1.1.0.jar" id="hr.ja.penextern_feature" version="1.1.0" os="linux,macosx,win32">
       <category name="de.nittka.tooling.egit.extensions.category"/>
    </feature>
    <category-def name="de.nittka.tooling.egit.extensions.category" label="Egit extensions"/>
