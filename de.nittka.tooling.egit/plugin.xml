@@ -30,6 +30,9 @@
                         <instanceof
                               value="org.eclipse.egit.ui.internal.repository.tree.WorkingDirNode">
                         </instanceof>
+                        <instanceof
+                              value="org.eclipse.egit.ui.internal.repository.tree.FolderNode">
+                        </instanceof>
                      </or>
                      <test property="GitRepository.isBare" value="false" />
                   </iterate>
