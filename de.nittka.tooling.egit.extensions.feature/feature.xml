@@ -17,7 +17,14 @@
    </license>
 
    <plugin
-         id="de.nittka.tooling.egit"
+         id="de.nittka.tooling.egit.mavenimport"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="de.nittka.tooling.egit.bitucket"
          download-size="0"
          install-size="0"
          version="0.0.0"

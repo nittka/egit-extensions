@@ -1,6 +1,6 @@
 .settings/
 # Compiled class file
-/bin/
+bin/
 *.class
 
 # Log file

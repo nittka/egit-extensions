@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="de.nittka.tooling.egit.views"
+            name="Egit Extensions">
+      </category>
+      <view
+            category="de.nittka.tooling.egit.views"
+            class="de.nittka.tooling.egit.bitbucket.BitbucketView"
+            icon="icons/bb.png"
+            id="de.nittka.tooling.egit.bitbucket.BitbucketView"
+            name="Bitbucket View">
+      </view>
+   </extension>
+</plugin>
