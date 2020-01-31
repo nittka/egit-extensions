@@ -9,6 +9,12 @@
             name="Import Maven Project"
             >
       </command>
+      <command
+            categoryId="org.eclipse.egit.ui.commandCategory"
+            id="de.nittka.tooling.egit.ShowRawCommitDiff"
+            name="Show Diff"
+            >
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.handlers">
@@ -39,6 +45,22 @@
                </and>
          </activeWhen>
       </handler>
+      <handler
+            commandId="de.nittka.tooling.egit.ShowRawCommitDiff">
+         <class
+               class="de.nittka.tooling.egit.diff.DiffCommand">
+         </class>
+         <activeWhen>
+               <and>
+                  <count
+                        value="2">
+                  </count>
+                  <iterate>
+                     <instanceof value="org.eclipse.egit.core.internal.IRepositoryCommit" />
+                  </iterate>
+               </and>
+         </activeWhen>
+      </handler>
    </extension>
    <extension
          point="org.eclipse.ui.menus">
@@ -51,5 +73,24 @@
             <visibleWhen checkEnabled="true" />
          </command>
       </menuContribution>
+           <menuContribution
+            locationURI="popup:org.eclipse.egit.ui.historyPageContributions?after=history.group">
+      <command
+               commandId="de.nittka.tooling.egit.ShowRawCommitDiff"
+               label="Show Diff"
+               style="push">
+            <visibleWhen checkEnabled="true" />
+         </command>
+      </menuContribution>
+
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="de.nittka.tooling.egit.diff.DiffEditor"
+            default="false"
+            id="de.nittka.tooling.egit.diffeditor"
+            name="DiffEditor">
+      </editor>
    </extension>
 </plugin>

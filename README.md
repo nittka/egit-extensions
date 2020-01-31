@@ -9,6 +9,10 @@ If you select specialized import wizards, you need to select the maven wizard bu
 
 This plugin adds an Import Maven Project entry to the context menu (for the repository and the Working Tree).
 
+## Show Diff for two commits
+
+The "Compare with each other" feature is nice but sometimes you want to see the diff without having to navigate through every single file, e.g. when reviewing version updates in many pom files.
+
 ## open extern
 
 We found the openextern plugin very useful.
