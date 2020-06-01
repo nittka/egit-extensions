@@ -1,6 +1,10 @@
 package de.nittka.tooling.egit.bitbucket;
 
-import org.eclipse.egit.ui.internal.clone.GitCloneWizard;
+import java.util.Collections;
+
+import org.eclipse.core.commands.Command;
+import org.eclipse.core.commands.ParameterizedCommand;
+import org.eclipse.egit.ui.internal.repository.tree.command.CloneCommand;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
@@ -10,7 +14,6 @@ import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
-import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
@@ -18,6 +21,8 @@ import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.commands.ICommandService;
+import org.eclipse.ui.handlers.IHandlerService;
 import org.eclipse.ui.part.ViewPart;
 
 /**
@@ -134,12 +139,20 @@ public class BitbucketView extends ViewPart {
 
 	private void runCloneAction() {
 		BitbucketRepository repo = getSelectedRepository();
-		if(repo!=null) {
-			GitCloneWizard wizard =new GitCloneWizard(repo.getCloneURL());
-			wizard.setShowProjectImport(true);
-			WizardDialog dlg = new WizardDialog(getViewSite().getShell(), wizard);
-			dlg.setHelpAvailable(true);
-			dlg.open();
+		if (repo != null) {
+			ICommandService commandService = PlatformUI.getWorkbench().getService(ICommandService.class);
+			Command cmd = commandService.getCommand(CloneCommand.COMMAND_ID);
+			if (cmd != null && cmd.isDefined()) {
+				IHandlerService handlerService = PlatformUI.getWorkbench().getService(IHandlerService.class);
+				try {
+					handlerService.executeCommand(
+							ParameterizedCommand.generateCommand(cmd,
+									Collections.singletonMap(CloneCommand.REPOSITORY_URI_PARAMETER_ID, repo.getCloneURL())),
+							null);
+				} catch (Exception e) {
+					//ignore
+				}
+			}
 		}
 	}
 
